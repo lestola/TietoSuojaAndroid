@@ -55,20 +55,20 @@ public class QuestionActivity extends AppCompatActivity {
         button4 = (Button) findViewById(R.id.btnAnswer4);
         pbTime = (ProgressBar) findViewById(R.id.pbAika);
 
-        //alustetaan aika 100 sekunttiin
+        //alustetaan aika 100 prosenttiin
         aika = 100;
         pbTime.setProgress(aika);
 
         //ladataan näytölle ensimmäinen kysymys, että peli pääsee alkamaan
         new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");
 
-        //vähennetään aikaa joka sekunti
+        //vähennetään aikaa tietyin väliajoin
         Thread t = new Thread() {
             @Override
             public void run() {
                 try {
                     while (!isInterrupted()) {
-                        Thread.sleep(200);
+                        Thread.sleep(500);//näin monta millisekunttia menee yhden prosentin vähentämiseen
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -95,7 +95,7 @@ public class QuestionActivity extends AppCompatActivity {
         new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");
         //päivitetään piste taulukko
         tvScores.setText(String.valueOf(scores));
-        //säädetään aika takaisin 100 sekunttiin
+        //säädetään aika takaisin 100 prosenttiin
         aika = 100;
         pbTime.setProgress(aika);
     }
