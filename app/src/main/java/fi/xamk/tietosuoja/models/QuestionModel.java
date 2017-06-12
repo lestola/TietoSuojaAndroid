@@ -12,10 +12,11 @@ public class QuestionModel {
     private String Answer3;
     private String Answer4;
     private int CorrectAnswer;
+    private String CorrectArg;
+    private String IncorrectArg;
+    private String Topic;
 
-    public String getQuestion() {
-        return Question;
-    }
+    public String getQuestion() { return Question; }
 
     public void setQuestion(String question) {
         Question = question;
@@ -53,11 +54,34 @@ public class QuestionModel {
         Answer4 = answer4;
     }
 
+    public String getCorrectArg() {
+        return CorrectArg;
+    }
+
+    public void setCorrectArg(String correctArg) {
+        CorrectArg = correctArg;
+    }
+
+    public String getIncorrectArg() {
+        return IncorrectArg;
+    }
+
+    public void setIncorrectArg(String incorrectArg) {
+        IncorrectArg = incorrectArg;
+    }
+
+    public String getTopic() {
+        return Topic;
+    }
+
+    public void setTopic(String topic) {
+        Topic = topic;
+    }
+
     public int getCorrectAnswer() {
         return CorrectAnswer;
     }
 
-    public void setCorrectAnswer(int correctAnswer) {
-        CorrectAnswer = correctAnswer;
-    }
+    public void setCorrectAnswer(int correctAnswer) { CorrectAnswer = correctAnswer; }
+
 }

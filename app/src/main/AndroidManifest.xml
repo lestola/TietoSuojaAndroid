@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuestionActivity" />
-        <activity android:name=".GameOver"></activity>
+        <activity android:name=".GameOver" />
+        <activity android:name=".ShareScores"></activity>
     </application>
 
 </manifest>
