@@ -7,7 +7,7 @@
     tools:context="fi.xamk.tietosuoja.ShareScores">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvScores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

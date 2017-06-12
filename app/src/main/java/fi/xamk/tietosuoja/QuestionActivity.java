@@ -48,6 +48,7 @@ public class QuestionActivity extends AppCompatActivity {
     private String incorrectArg;
     private String topic;
     private boolean stopClock = true;
+    private int round = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,8 @@ public class QuestionActivity extends AppCompatActivity {
         //alustetaan aika 100 prosenttiin
         aika = 100;
         pbTime.setProgress(aika);
+        //alustetaan pelikierros 0
+        round = 0;
 
         //ladataan näytölle ensimmäinen kysymys, että peli pääsee alkamaan
         new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");
@@ -109,6 +112,8 @@ public class QuestionActivity extends AppCompatActivity {
         //säädetään aika takaisin 100 prosenttiin
         aika = 100;
         pbTime.setProgress(aika);
+        //lisätään pelikierrokseen 1
+        round++;
     }
 
     public void wrongAnswer(){
@@ -117,6 +122,7 @@ public class QuestionActivity extends AppCompatActivity {
         Intent startNewActivity = new Intent(this, GameOver.class);
         startNewActivity.putExtra("pisteet", scores);
         startNewActivity.putExtra("syy", incorrectArg);
+        startNewActivity.putExtra("kierros", round);
         startActivity(startNewActivity);
 
     }

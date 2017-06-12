@@ -19,4 +19,10 @@ public class MainActivity extends AppCompatActivity {
         Intent startNewActivity = new Intent(this, QuestionActivity.class);
         startActivity(startNewActivity);
     }
+
+    public void shareScoresButtonPushed(View view){
+        Intent startNewActivity = new Intent(this, ShareScores.class);
+        startActivity(startNewActivity);
+
+    }
 }
