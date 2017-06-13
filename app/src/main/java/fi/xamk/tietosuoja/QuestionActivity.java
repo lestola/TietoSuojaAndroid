@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,17 @@ public class QuestionActivity extends AppCompatActivity {
     private String topic;
     private boolean stopClock = true;
     private int round = 0;
+    //pisteet
+    private RadioButton rb1;
+    private RadioButton rb2;
+    private RadioButton rb3;
+    private RadioButton rb4;
+    private RadioButton rb5;
+    private RadioButton rb6;
+    private RadioButton rb7;
+    private RadioButton rb8;
+    private RadioButton rb9;
+    private RadioButton rb10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +76,18 @@ public class QuestionActivity extends AppCompatActivity {
         button3 = (Button) findViewById(R.id.btnAnswer3);
         button4 = (Button) findViewById(R.id.btnAnswer4);
         pbTime = (ProgressBar) findViewById(R.id.pbAika);
+        //pisteobjektit
+        rb1 = (RadioButton) findViewById(R.id.rb1) ;
+        rb2 = (RadioButton) findViewById(R.id.rb2) ;
+        rb3 = (RadioButton) findViewById(R.id.rb3) ;
+        rb4 = (RadioButton) findViewById(R.id.rb4) ;
+        rb5 = (RadioButton) findViewById(R.id.rb5) ;
+        rb6 = (RadioButton) findViewById(R.id.rb6) ;
+        rb7 = (RadioButton) findViewById(R.id.rb7) ;
+        rb8 = (RadioButton) findViewById(R.id.rb8) ;
+        rb9 = (RadioButton) findViewById(R.id.rb9) ;
+        rb10 = (RadioButton) findViewById(R.id.rb10) ;
+
 
         //alustetaan aika 100 prosenttiin
         aika = 100;
@@ -104,26 +128,63 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     public void rightAnswer(){
-        //jos vastaus on oikea, lisätään piste ja ladataan uusi kysymys
-        scores += (aika*10*60/100);
-        new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");
-        //päivitetään piste taulukko
-        tvScores.setText(String.valueOf(scores));
-        //säädetään aika takaisin 100 prosenttiin
-        aika = 100;
-        pbTime.setProgress(aika);
-        //lisätään pelikierrokseen 1
-        round++;
+        scores += (aika*6);//jos vastaus on oikea, lisätään piste ja ladataan uusi kysymys (6 pistettä / prosentti --> 10 pistettä / sekunti)
+        new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");//haetaan seuraava kysymys
+        tvScores.setText(String.valueOf(scores));//päivitetään pistenäyttö
+        aika = 100;//säädetään aika takaisin 100 prosenttiin
+        pbTime.setProgress(aika);//ja päivitetään se näyttöön
+        round++;//lisätään pelikierrokseen 1
+        scoresManager(round);
+        if (round > 9){
+            wrongAnswer();//jos kaikki 10 kysymystä oikein, niin siirrytään pistesivulle
+        }
     }
 
     public void wrongAnswer(){
         stopClock = false; //pysäytetään kello!!!
-        saveHighScore(scores);
-        Intent startNewActivity = new Intent(this, GameOver.class);
-        startNewActivity.putExtra("pisteet", scores);
-        startNewActivity.putExtra("syy", incorrectArg);
-        startNewActivity.putExtra("kierros", round);
-        startActivity(startNewActivity);
+        saveHighScore(scores); //tallennetaan high pisteet
+        Intent startNewActivity = new Intent(this, GameOver.class); //valmistutaan avaamaan seuraava sivu
+        startNewActivity.putExtra("pisteet", scores); //siirretään pistearvo seuraavalle sivulle
+        startNewActivity.putExtra("syy", incorrectArg);//siirretään syy väärään vastaukseen seuraavalle sivulle
+        startNewActivity.putExtra("kierros", round); //siirretään tieto, monesko kierros, seuraavalle sivulle
+        startActivity(startNewActivity);//avataan seuraava sivu
+
+    }
+
+    public void scoresManager(int amount){
+        //säädetään pisteet näyttöön oikein
+        if (amount > 0){
+            rb1.toggle();
+        }
+        if (amount > 1){
+            rb2.toggle();
+        }
+        if (amount > 2){
+            rb3.toggle();
+        }
+        if (amount > 3){
+            rb4.toggle();
+        }
+        if (amount > 4){
+            rb5.toggle();
+        }
+        if (amount > 5){
+            rb6.toggle();
+        }
+        if (amount > 6){
+            rb7.toggle();
+        }
+        if (amount > 7){
+            rb8.toggle();
+        }
+        if (amount > 8){
+            rb9.toggle();
+        }
+        if (amount > 9){
+            rb10.toggle();
+        }
+
+
 
     }
 

@@ -16,6 +16,7 @@ public class GameOver extends AppCompatActivity {
     private Button btnShareFacebook;
     private Button btnShareEmail;
     private TextView tvHighScore;
+    private TextView tvRank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class GameOver extends AppCompatActivity {
         btnShareFacebook = (Button) findViewById(R.id.btnShareFacebook);
         btnShareEmail = (Button) findViewById(R.id.btnShareEmail);
         tvHighScore = (TextView) findViewById(R.id.tvHighScore);
+        tvRank = (TextView) findViewById(R.id.tvRank);
 
         //tulostetaan edellisen sivun pisteet
         int scores = getIntent().getIntExtra("pisteet", 0);
@@ -36,6 +38,9 @@ public class GameOver extends AppCompatActivity {
         int round = getIntent().getIntExtra("kierros",0);
         tvScores.setText("Pisteet:" + scores);
         tvSyy.setText(syy);
+
+        //annetaan arvonimi
+        giveRank(round);
 
         //ladataan High Scoret
         SharedPreferences sharedPref = getSharedPreferences("ScoredTable", Context.MODE_PRIVATE);
@@ -54,6 +59,25 @@ public class GameOver extends AppCompatActivity {
         }
 
 
+    }
+
+    public void giveRank (int howManyScores){
+
+        if (howManyScores > 1){
+            tvRank.setText("Olet: Tietosuojanoviisi");
+        }
+        if (howManyScores > 3){
+            tvRank.setText("Olet: Tietosuoja-amatööri");
+        }
+        if (howManyScores > 5){
+            tvRank.setText("Olet: Tietotsuojatietäjä");
+        }
+        if (howManyScores > 7){
+            tvRank.setText("Olet: Tietosuojamestari");
+        }
+        if (howManyScores > 9){
+            tvRank.setText("Olet: Tietosuojaguru");
+        }
     }
 
     public void ContinuePushed(){
