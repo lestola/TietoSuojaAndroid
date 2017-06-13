@@ -33,6 +33,10 @@ import fi.xamk.tietosuoja.models.QuestionModel;
 
 public class QuestionActivity extends AppCompatActivity {
 
+    //tämä rivi on tietokannan osoite
+    //Todo--------------------------------------------------------------------------------
+    private String tietokantaOsoite = "https://www.ictlab.fi/tsuoja/tietosuojalaki.json";
+    //todo--------------------------------------------------------------------------------
     private TextView tvData;
     private TextView tvTopic;
     private TextView tvScores;
@@ -96,7 +100,7 @@ public class QuestionActivity extends AppCompatActivity {
         round = 0;
 
         //ladataan näytölle ensimmäinen kysymys, että peli pääsee alkamaan
-        new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");
+        new JSONTask().execute(tietokantaOsoite);
 
         //vähennetään aikaa tietyin väliajoin
         Thread t = new Thread() {
@@ -129,7 +133,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void rightAnswer(){
         scores += (aika*6);//jos vastaus on oikea, lisätään piste ja ladataan uusi kysymys (6 pistettä / prosentti --> 10 pistettä / sekunti)
-        new JSONTask().execute("http://theordermusic.xyz/JSON/testaus.json");//haetaan seuraava kysymys
+        new JSONTask().execute(tietokantaOsoite);//haetaan seuraava kysymys
         tvScores.setText(String.valueOf(scores));//päivitetään pistenäyttö
         aika = 100;//säädetään aika takaisin 100 prosenttiin
         pbTime.setProgress(aika);//ja päivitetään se näyttöön
@@ -142,7 +146,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void wrongAnswer(){
         stopClock = false; //pysäytetään kello!!!
-        saveHighScore(scores); //tallennetaan high pisteet
+        saveHighScore(scores, round); //tallennetaan high pisteet
         Intent startNewActivity = new Intent(this, GameOver.class); //valmistutaan avaamaan seuraava sivu
         startNewActivity.putExtra("pisteet", scores); //siirretään pistearvo seuraavalle sivulle
         startNewActivity.putExtra("syy", incorrectArg);//siirretään syy väärään vastaukseen seuraavalle sivulle
@@ -188,13 +192,14 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
-    public void saveHighScore(int data){
+    public void saveHighScore(int scoreData, int roundData){
 
         SharedPreferences sharedPref = getSharedPreferences("ScoredTable", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         int loadedScores = sharedPref.getInt("HighScore", 0);
-        if (data > loadedScores) {
-            editor.putInt("HighScore", data);
+        if (scoreData > loadedScores) {
+            editor.putInt("HighScore", scoreData);
+            editor.putInt("HighRound", roundData);
             editor.apply();
             Toast.makeText(this, "Ennätyspisteet tallennettu!", Toast.LENGTH_LONG).show();
         }

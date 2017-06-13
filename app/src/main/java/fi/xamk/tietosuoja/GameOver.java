@@ -1,9 +1,11 @@
 package fi.xamk.tietosuoja;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,7 +16,6 @@ public class GameOver extends AppCompatActivity {
     private TextView tvHeader;
     private TextView tvSyy;
     private Button btnShareFacebook;
-    private Button btnShareEmail;
     private TextView tvHighScore;
     private TextView tvRank;
 
@@ -28,7 +29,6 @@ public class GameOver extends AppCompatActivity {
         tvHeader = (TextView) findViewById(R.id.tvHeader);
         tvSyy = (TextView) findViewById(R.id.tvSyy);
         btnShareFacebook = (Button) findViewById(R.id.btnShareFacebook);
-        btnShareEmail = (Button) findViewById(R.id.btnShareEmail);
         tvHighScore = (TextView) findViewById(R.id.tvHighScore);
         tvRank = (TextView) findViewById(R.id.tvRank);
 
@@ -54,8 +54,7 @@ public class GameOver extends AppCompatActivity {
         }
         else {
             tvHeader.setText("HUPS! sait vain " + round + " oikein. :(");
-            btnShareFacebook.setClickable(false);
-            btnShareEmail.setClickable(false);
+            //btnShareFacebook.setClickable(false);
         }
 
 
@@ -80,7 +79,17 @@ public class GameOver extends AppCompatActivity {
         }
     }
 
-    public void ContinuePushed(){
-        //TODO tähän pitää tehdä pelin uudelleen aloitus
+    public void ContinuePushed(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
+    }
+
+    public void ShareButtonPushed(View view){
+
+        Intent startNewActivity = new Intent(this, ShareScores.class); //valmistutaan avaamaan seuraava sivu
+        startActivity(startNewActivity);//avataan seuraava sivu
+
     }
 }
