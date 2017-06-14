@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tietosuoja</string>
+    <string name="info">Guide</string>
+    <string name="new_game">Nytt spel</string>
+    <string name="settings">Inställningar</string>
+    <string name="share_results">Dela bästa resultatet</string>
+</resources>

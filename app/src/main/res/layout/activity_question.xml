@@ -27,7 +27,8 @@
             android:layout_weight="1"
             android:text="Pisteet:"
             android:textAlignment="viewStart"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:text="@string/scores" />
 
         <TextView
             android:id="@+id/tvScores"
@@ -193,7 +194,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:onClick="button1Pushed"
-            android:text="Vastaus 1"
+            android:text="@string/Answer1"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -209,7 +210,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:onClick="button2Pushed"
-            android:text="Vastaus 2"
+            android:text="@string/Answer2"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -225,7 +226,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:onClick="button3Pushed"
-            android:text="Vastaus 3"
+            android:text="@string/Answer3"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -242,7 +243,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:onClick="button4Pushed"
-            android:text="Vastaus 4"
+            android:text="@string/Answer4"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

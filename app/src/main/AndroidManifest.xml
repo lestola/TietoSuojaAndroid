@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".QuestionActivity" />
         <activity android:name=".GameOver" />
-        <activity android:name=".ShareScores"></activity>
+        <activity android:name=".ShareScores" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

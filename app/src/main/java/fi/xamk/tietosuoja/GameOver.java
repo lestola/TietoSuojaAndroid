@@ -63,19 +63,19 @@ public class GameOver extends AppCompatActivity {
     public void giveRank (int howManyScores){
 
         if (howManyScores > 1){
-            tvRank.setText("Olet: Tietosuojanoviisi");
+            tvRank.setText(R.string.rank_novice);
         }
         if (howManyScores > 3){
-            tvRank.setText("Olet: Tietosuoja-amatööri");
+            tvRank.setText(R.string.rank_amatour);
         }
         if (howManyScores > 5){
-            tvRank.setText("Olet: Tietotsuojatietäjä");
+            tvRank.setText(R.string.rank_knower);
         }
         if (howManyScores > 7){
-            tvRank.setText("Olet: Tietosuojamestari");
+            tvRank.setText(R.string.rank_master);
         }
         if (howManyScores > 9){
-            tvRank.setText("Olet: Tietosuojaguru");
+            tvRank.setText(R.string.rank_guru);
         }
     }
 

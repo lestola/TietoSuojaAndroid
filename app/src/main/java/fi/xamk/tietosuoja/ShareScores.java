@@ -24,8 +24,8 @@ public class ShareScores extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         int loadedScores = sharedPref.getInt("HighScore", 0);
         int loadedRound = sharedPref.getInt("HighRound", 0);
-        tvScores.setText("Pisteet:" + loadedScores);
-        tvRound.setText("Kysymykset oikein: " + loadedRound + "/10");
+        tvScores.setText(" "+loadedScores);
+        tvRound.setText(" " + loadedRound + "/10");
 
     }
 

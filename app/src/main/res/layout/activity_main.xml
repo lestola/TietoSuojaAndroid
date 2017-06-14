@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="startNewGameButtonPushed"
-            android:text="Uusi peli"
+            android:text="@string/new_game"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="132dp" />
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="shareScoresButtonPushed"
-            android:text="Jaa paras tulos"
+            android:text="@string/share_results"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="248dp" />
 
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Asetukset"
+            android:text="@string/settings"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="304dp" />
 
@@ -77,7 +77,8 @@
             android:layout_weight="1"
             android:text="Ohje"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="359dp" />
+            tools:layout_editor_absoluteY="359dp"
+            tools:text="@string/info" />
 
     </LinearLayout>
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tietosuoja</string>
+    <string name="info">Ohje</string>
+    <string name="new_game">Uusi Peli</string>
+    <string name="settings">Asetukset</string>
+    <string name="share_results">Jaa Paras Tulos</string>
+    <string name="scores">Pisteet:</string>
+    <string name="Answer1">Vastaus 1</string>
+    <string name="Answer2">Vastaus 2</string>
+    <string name="Answer3">Vastaus 3</string>
+    <string name="Answer4">Vastaus 4</string>
+    <string name="oops_wrong">HUPS! Vastasit väärin :-(</string>
+    <string name="rank_novice">Olet: Tietosuojanoviisi</string>
+    <string name="rank_amatour">Olet: Tietosuoja-amatööri</string>
+    <string name="rank_knower">Olet: Tietotsuojatietäjä</string>
+    <string name="rank_master">Olet: Tietosuojamestari</string>
+    <string name="rank_guru">Olet: Tietosuojaguru</string>
+</resources>
